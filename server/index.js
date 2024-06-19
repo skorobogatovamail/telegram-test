@@ -2,7 +2,7 @@ const TelegramBot = require("node-telegram-bot-api");
 require("dotenv").config();
 
 const token = process.env.TOKEN;
-const webAppUrl = "/";
+const webAppUrl = "https://ya.ru";
 const bot = new TelegramBot(token, { polling: true });
 
 bot.on("message", async (msg) => {
@@ -16,13 +16,13 @@ bot.on("message", async (msg) => {
       },
     });
 
-    // await bot.sendMessage(chatId, "Сделай заказ", {
-    //   reply_markup: {
-    //     inline_keyboard: [
-    //       [{ text: "Сделать заказ", web_app: { url: webAppUrl } }],
-    //     ],
-    //   },
-    // });
+    await bot.sendMessage(chatId, "Заходи в наш интернет магазин", {
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Сделать заказ", web_app: { url: webAppUrl } }],
+        ],
+      },
+    });
   }
 
   bot.sendMessage(chatId, "Received your message");
